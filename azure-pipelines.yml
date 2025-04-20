@@ -1,0 +1,18 @@
+trigger:
+  - main  # or 'master'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '<Pradeeshwaran@studentambassadors.com>'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az storage blob upload-batch \
+          --destination '$web' \
+          --source '.' \
+          --account-name '<Pradeeshwaran S>'
+      displayName: 'Upload website to Azure Storage'
